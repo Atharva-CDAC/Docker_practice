@@ -1,0 +1,442 @@
+dac@dac-55 MINGW64 ~/Desktop/Docker Example
+$ ls
+'Hello world'/   Max_and_Min_of_3/
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example
+$ cd Max_and_Min_of_3/
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3
+$ git init
+Initialized empty Git repository in C:/Users/dac.STUDENTSDC/Desktop/Docker Example/Max_and_Min_of_3/.git/
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Dockerfile
+        SumOfMaxMin.java
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (master)
+$ git add .
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (master)
+$ git branch -m main
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ git add .
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   Dockerfile
+        new file:   SumOfMaxMin.java
+
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ git commit -m "Add code and dockerfile"
+[main (root-commit) 8af6d09] Add code and dockerfile
+ 2 files changed, 53 insertions(+)
+ create mode 100644 Dockerfile
+ create mode 100644 SumOfMaxMin.java
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ git push
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ git push -u origin main
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ git remote add origin https://github.com/Atharva-CDAC/Docker_practice.git
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ git push
+fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin main
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ git push -u origin main
+info: please complete authentication in your browser...
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 777 bytes | 777.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Atharva-CDAC/Docker_practice.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ ls
+Dockerfile  SumOfMaxMin.java
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker build -t max_min_sum
+ERROR: "docker buildx build" requires exactly 1 argument.
+See 'docker buildx build --help'.
+
+Usage:  docker buildx build [OPTIONS] PATH | URL | -
+
+Start a build
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker build -t max_min_sum .
+[+] Building 16.1s (8/8) FINISHED                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile               0.0s
+ => => transferring dockerfile: 329B                               0.0s
+ => [internal] load metadata for docker.io/library/openjdk:11-jre  2.6s
+ => [internal] load .dockerignore                                  0.0s
+ => => transferring context: 2B                                    0.0s
+ => [1/4] FROM docker.io/library/openjdk:11-jre-slim@sha256:93af7  4.6s
+ => => resolve docker.io/library/openjdk:11-jre-slim@sha256:93af7  0.0s
+ => => sha256:d73cf48caaac2e45ad76a2a9eb3b311d0 46.04MB / 46.04MB  2.5s
+ => => sha256:12cca292b13cb58fadde25af113ddc4ac3b0c5e 212B / 212B  0.6s
+ => => sha256:a2f2f93da48276873890ac821b3c991d53a 1.58MB / 1.58MB  0.8s
+ => => sha256:1efc276f4ff952c055dea726cfc96ec6a 31.37MB / 31.37MB  2.7s
+ => => extracting sha256:1efc276f4ff952c055dea726cfc96ec6a4fdb8b6  0.9s
+ => => extracting sha256:a2f2f93da48276873890ac821b3c991d53a7e864  0.1s
+ => => extracting sha256:12cca292b13cb58fadde25af113ddc4ac3b0c5e3  0.0s
+ => => extracting sha256:d73cf48caaac2e45ad76a2a9eb3b311d0e4eb1d8  0.6s
+ => [internal] load build context                                  0.2s
+ => => transferring context: 31.90kB                               0.1s
+ => [2/4] WORKDIR /app                                             7.9s
+ => [3/4] COPY . .                                                 0.1s
+ => ERROR [4/4] RUN javac SumOfMaxMin.java                         0.6s
+------
+ > [4/4] RUN javac SumOfMaxMin.java:
+0.326 /bin/sh: 1: javac: not found
+------
+Dockerfile:11
+--------------------
+   9 |
+  10 |     # Compile the Java program
+  11 | >>> RUN javac SumOfMaxMin.java
+  12 |
+  13 |     # Command to run the application
+--------------------
+ERROR: failed to solve: process "/bin/sh -c javac SumOfMaxMin.java" did not complete successfully: exit code: 127
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ code Dockerfile
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ code Dockerfile
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker build -t max_min_sum .
+[+] Building 34.3s (9/9) FINISHED                  docker:desktop-linux
+ => [internal] load build definition from Dockerfile               0.0s
+ => => transferring dockerfile: 324B                               0.0s
+ => [internal] load metadata for docker.io/library/openjdk:11-jdk  1.5s
+ => [internal] load .dockerignore                                  0.0s
+ => => transferring context: 2B                                    0.0s
+ => [1/4] FROM docker.io/library/openjdk:11-jdk@sha256:99bac5bf8  13.1s
+ => => resolve docker.io/library/openjdk:11-jdk@sha256:99bac5bf83  0.0s
+ => => sha256:db38d58ec8ab4111b072f6700f978a 202.07MB / 202.07MB  11.3s
+ => => sha256:66223a710990a0ae7162aeed80417d30303afa3 213B / 213B  0.5s
+ => => sha256:d85151f15b6683b98f21c3827ac545188b1 5.42MB / 5.42MB  1.1s
+ => => sha256:9daef329d35093868ef75ac8b7c6eb407 54.58MB / 54.58MB  7.3s
+ => => sha256:2068746827ec1b043b571e4788693eab7 10.88MB / 10.88MB  1.5s
+ => => sha256:d9d4b9b6e964657da49910b495173d6c4f0 5.16MB / 5.16MB  0.8s
+ => => sha256:001c52e26ad57e3b25b439ee0052f6692 55.00MB / 55.00MB  3.3s
+ => => extracting sha256:001c52e26ad57e3b25b439ee0052f6692e5c0f2d  2.0s
+ => => extracting sha256:d9d4b9b6e964657da49910b495173d6c4f0d9bc4  0.3s
+ => => extracting sha256:2068746827ec1b043b571e4788693eab7e9b2a95  0.2s
+ => => extracting sha256:9daef329d35093868ef75ac8b7c6eb407fa53abb  1.8s
+ => => extracting sha256:d85151f15b6683b98f21c3827ac545188b1849ef  0.2s
+ => => extracting sha256:66223a710990a0ae7162aeed80417d30303afa3f  0.0s
+ => => extracting sha256:db38d58ec8ab4111b072f6700f978a51985acd25  1.5s
+ => [internal] load build context                                  0.0s
+ => => transferring context: 2.49kB                                0.0s
+ => [2/4] WORKDIR /app                                            17.9s
+ => [3/4] COPY . .                                                 0.1s
+ => [4/4] RUN javac SumOfMaxMin.java                               0.9s
+ => exporting to image                                             0.5s
+ => => exporting layers                                            0.2s
+ => => exporting manifest sha256:23f1e2be2cd24d3026d51aaff49f2f72  0.0s
+ => => exporting config sha256:7aa8571ea907569fc23cd884e7bbc9adfa  0.0s
+ => => exporting attestation manifest sha256:9c7107fbe80b19cfea0d  0.1s
+ => => exporting manifest list sha256:74fc11bc1cdf4cca0e9f6965e27  0.0s
+ => => naming to docker.io/library/max_min_sum:latest              0.0s
+ => => unpacking to docker.io/library/max_min_sum:latest           0.1s
+
+What's next:
+    View a summary of image vulnerabilities and recommendations → docker scout quickview
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker run m
+Unable to find image 'm:latest' locally
+docker: Error response from daemon: pull access denied for m, repository does not exist or may require 'docker login'.
+See 'docker run --help'.
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker run 7
+Unable to find image '7:latest' locally
+docker: Error response from daemon: pull access denied for 7, repository does not exist or may require 'docker login'.
+See 'docker run --help'.
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker run max_min_java
+Unable to find image 'max_min_java:latest' locally
+docker: Error response from daemon: pull access denied for max_min_java, repository does not exist or may require 'docker login'.
+See 'docker run --help'.
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker run max_min_sum
+Enter first number : Exception in thread "main" java.util.NoSuchElementException
+        at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+        at java.base/java.util.Scanner.next(Scanner.java:1594)
+        at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+        at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+        at SumOfMaxMin.main(SumOfMaxMin.java:7)
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker build -t max_min_sum .
+[+] Building 2.0s (9/9) FINISHED                   docker:desktop-linux
+ => [internal] load build definition from Dockerfile               0.0s
+ => => transferring dockerfile: 324B                               0.0s
+ => [internal] load metadata for docker.io/library/openjdk:11-jdk  1.6s
+ => [internal] load .dockerignore                                  0.0s
+ => => transferring context: 2B                                    0.0s
+ => [1/4] FROM docker.io/library/openjdk:11-jdk@sha256:99bac5bf83  0.0s
+ => => resolve docker.io/library/openjdk:11-jdk@sha256:99bac5bf83  0.0s
+ => [internal] load build context                                  0.0s
+ => => transferring context: 2.20kB                                0.0s
+ => CACHED [2/4] WORKDIR /app                                      0.0s
+ => CACHED [3/4] COPY . .                                          0.0s
+ => CACHED [4/4] RUN javac SumOfMaxMin.java                        0.0s
+ => exporting to image                                             0.1s
+ => => exporting layers                                            0.0s
+ => => exporting manifest sha256:23f1e2be2cd24d3026d51aaff49f2f72  0.0s
+ => => exporting config sha256:7aa8571ea907569fc23cd884e7bbc9adfa  0.0s
+ => => exporting attestation manifest sha256:38f2529cd9ca252eb4ee  0.0s
+ => => exporting manifest list sha256:68f02c17c320d926071bacd9baa  0.0s
+ => => naming to docker.io/library/max_min_sum:latest              0.0s
+ => => unpacking to docker.io/library/max_min_sum:latest           0.0s
+
+What's next:
+    View a summary of image vulnerabilities and recommendations → docker scout quickview
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker run max_min_java
+Unable to find image 'max_min_java:latest' locally
+docker: Error response from daemon: pull access denied for max_min_java, repository does not exist or may require 'docker login'.
+See 'docker run --help'.
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker run max_min_sum
+Enter first number : Exception in thread "main" java.util.NoSuchElementException
+        at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+        at java.base/java.util.Scanner.next(Scanner.java:1594)
+        at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+        at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+        at SumOfMaxMin.main(SumOfMaxMin.java:7)
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ ^C
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker run -it max_min_sum
+Enter first number : 5
+Enter second number : 2
+Enter third number : 7
+Sum of max number(7) and min number(2) is 9
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker run -d -p 8080:80 my_nginx nginx
+Unable to find image 'my_nginx:latest' locally
+docker: Error response from daemon: pull access denied for my_nginx, repository does not exist or may require 'docker login'.
+See 'docker run --help'.
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ docker run -d -p 8080:80 --name my_nginx nginx
+897f9e86f2757f4573508e27f0b6bf166e09691c6e1aa009c0e281340f920ab5
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ choco install kubernetes-cli
+bash: choco: command not found
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kube --version
+bash: kube: command not found
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl version
+Client Version: v1.30.2
+Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+Server Version: v1.30.2
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get pods
+No resources found in default namespace.
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   7m48s
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl run my_nginx --image nginx
+The Pod "my_nginx" is invalid:
+* metadata.name: Invalid value: "my_nginx": a lowercase RFC 1123 subdomain musnsist of lower case alphanumeric characters, '-' or '.', and must start and enth an alphanumeric character (e.g. 'example.com', regex used for validation is-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')
+* spec.containers[0].name: Invalid value: "my_nginx": a lowercase RFC 1123 labust consist of lower case alphanumeric characters or '-', and must start and eith an alphanumeric character (e.g. 'my-name',  or '123-abc', regex used for vation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?')
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl run mynginx --image nginx
+pod/mynginx created
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get all
+NAME          READY   STATUS    RESTARTS   AGE
+pod/mynginx   1/1     Running   0          12s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   9m11s
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get pods
+NAME      READY   STATUS    RESTARTS   AGE
+mynginx   1/1     Running   0          16s
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl create deployment mynginx
+error: required flag(s) "image" not set
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl create deployment mynginx --image nginx
+deployment.apps/mynginx created
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl scale deployment mynginx --replicas 5
+deployment.apps/mynginx scaled
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get pods
+NAME                       READY   STATUS              RESTARTS   AGE
+mynginx                    1/1     Running             0          3m30s
+mynginx-76748d594d-552dk   1/1     Running             0          2m27s
+mynginx-76748d594d-6zzbz   0/1     ContainerCreating   0          4s
+mynginx-76748d594d-dknpx   0/1     ContainerCreating   0          4s
+mynginx-76748d594d-k4t9h   0/1     ContainerCreating   0          4s
+mynginx-76748d594d-lbvsb   0/1     ContainerCreating   0          4s
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get pods
+NAME                       READY   STATUS    RESTARTS   AGE
+mynginx                    1/1     Running   0          3m50s
+mynginx-76748d594d-552dk   1/1     Running   0          2m47s
+mynginx-76748d594d-6zzbz   1/1     Running   0          24s
+mynginx-76748d594d-dknpx   1/1     Running   0          24s
+mynginx-76748d594d-k4t9h   1/1     Running   0          24s
+mynginx-76748d594d-lbvsb   1/1     Running   0          24s
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get all
+NAME                           READY   STATUS    RESTARTS   AGE
+pod/mynginx                    1/1     Running   0          3m54s
+pod/mynginx-76748d594d-552dk   1/1     Running   0          2m51s
+pod/mynginx-76748d594d-6zzbz   1/1     Running   0          28s
+pod/mynginx-76748d594d-dknpx   1/1     Running   0          28s
+pod/mynginx-76748d594d-k4t9h   1/1     Running   0          28s
+pod/mynginx-76748d594d-lbvsb   1/1     Running   0          28s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   12m
+
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/mynginx   5/5     5            5           2m51s
+
+NAME                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/mynginx-76748d594d   5         5         5       2m51s
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get pods
+NAME                       READY   STATUS    RESTARTS   AGE
+mynginx                    1/1     Running   0          4m24s
+mynginx-76748d594d-552dk   1/1     Running   0          3m21s
+mynginx-76748d594d-6zzbz   1/1     Running   0          58s
+mynginx-76748d594d-dknpx   1/1     Running   0          58s
+mynginx-76748d594d-k4t9h   1/1     Running   0          58s
+mynginx-76748d594d-lbvsb   1/1     Running   0          58s
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl delete pod mynginx-76748d594d-552dk
+pod "mynginx-76748d594d-552dk" deleted
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get pods
+NAME                       READY   STATUS              RESTARTS   AGE
+mynginx                    1/1     Running             0          5m5s
+mynginx-76748d594d-5hj7l   0/1     ContainerCreating   0          3s
+mynginx-76748d594d-6zzbz   1/1     Running             0          99s
+mynginx-76748d594d-dknpx   1/1     Running             0          99s
+mynginx-76748d594d-k4t9h   1/1     Running             0          99s
+mynginx-76748d594d-lbvsb   1/1     Running             0          99s
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl delete deployment mynginx
+deployment.apps "mynginx" deleted
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get pods
+NAME      READY   STATUS    RESTARTS   AGE
+mynginx   1/1     Running   0          5m53s
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl delete pod mynginx
+pod "mynginx" deleted
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get pods
+No resources found in default namespace.
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   15m
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$ kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   15m
+
+dac@dac-55 MINGW64 ~/Desktop/Docker Example/Max_and_Min_of_3 (main)
+$
